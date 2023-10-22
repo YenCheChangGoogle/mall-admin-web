@@ -1,11 +1,11 @@
 <template>
   <el-card class="form-container" shadow="never">
     <el-form :model="productAttr" :rules="rules" ref="productAttrFrom" label-width="150px">
-      <el-form-item label="属性名称：" prop="name">
+      <el-form-item label="屬性名稱：" prop="name">
         <el-input v-model="productAttr.name"></el-input>
       </el-form-item>
-      <el-form-item label="商品类型：">
-        <el-select v-model="productAttr.productAttributeCategoryId" placeholder="请选择">
+      <el-form-item label="商品類型：">
+        <el-select v-model="productAttr.productAttributeCategoryId" placeholder="請選擇">
           <el-option
             v-for="item in productAttrCateList"
             :key="item.id"
@@ -14,48 +14,48 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="分类筛选样式:">
+      <el-form-item label="分類篩選樣式:">
         <el-radio-group v-model="productAttr.filterType">
           <el-radio :label="0">普通</el-radio>
-          <el-radio :label="1">颜色</el-radio>
+          <el-radio :label="1">顏色</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="能否进行检索:">
+      <el-form-item label="能否進行檢索:">
         <el-radio-group v-model="productAttr.searchType">
-          <el-radio :label="0">不需要检索</el-radio>
-          <el-radio :label="1">关键字检索</el-radio>
-          <el-radio :label="2">范围检索</el-radio>
+          <el-radio :label="0">不需要檢索</el-radio>
+          <el-radio :label="1">關鍵字檢索</el-radio>
+          <el-radio :label="2">範圍檢索</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="商品属性关联:">
+      <el-form-item label="商品屬性關聯:">
         <el-radio-group v-model="productAttr.relatedStatus">
           <el-radio :label="1">是</el-radio>
           <el-radio :label="0">否</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="属性是否可选:">
+      <el-form-item label="屬性是否可選:">
         <el-radio-group v-model="productAttr.selectType">
           <el-radio :label="0">唯一</el-radio>
-          <el-radio :label="1">单选</el-radio>
-          <el-radio :label="2">复选</el-radio>
+          <el-radio :label="1">單選</el-radio>
+          <el-radio :label="2">復選</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="属性值的录入方式:">
+      <el-form-item label="屬性值的錄入方式:">
         <el-radio-group v-model="productAttr.inputType">
-          <el-radio :label="0">手工录入</el-radio>
-          <el-radio :label="1">从下面列表中选择</el-radio>
+          <el-radio :label="0">手工錄入</el-radio>
+          <el-radio :label="1">從下面列表中選擇</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="属性值可选值列表:">
+      <el-form-item label="屬性值可選值列表:">
         <el-input :autosize="true" type="textarea" v-model="inputListFormat"></el-input>
       </el-form-item>
-      <el-form-item label="是否支持手动新增:">
+      <el-form-item label="是否支持手動新增:">
         <el-radio-group v-model="productAttr.handAddStatus">
           <el-radio :label="1">是</el-radio>
           <el-radio :label="0">否</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="排序属性：">
+      <el-form-item label="排序屬性：">
         <el-input v-model="productAttr.sort"></el-input>
       </el-form-item>
       <el-form-item>
@@ -96,8 +96,8 @@
         productAttr: Object.assign({}, defaultProductAttr),
         rules: {
           name: [
-            {required: true, message: '请输入属性名称', trigger: 'blur'},
-            {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
+            {required: true, message: '請輸入屬性名稱', trigger: 'blur'},
+            {min: 2, max: 140, message: '長度在 2 到 140 個字符', trigger: 'blur'}
           ]
         },
         productAttrCateList: null,
@@ -136,8 +136,8 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$confirm('是否提交数据', '提示', {
-              confirmButtonText: '确定',
+            this.$confirm('是否提交數據', '提示', {
+              confirmButtonText: '確定',
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
@@ -164,7 +164,7 @@
 
           } else {
             this.$message({
-              message: '验证失败',
+              message: '驗證失敗',
               type: 'error',
               duration: 1000
             });

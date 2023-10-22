@@ -5,10 +5,10 @@
              ref="homeAdvertiseFrom"
              label-width="150px"
              size="small">
-      <el-form-item label="广告名称：" prop="name">
+      <el-form-item label="廣告名稱：" prop="name">
         <el-input v-model="homeAdvertise.name" class="input-width"></el-input>
       </el-form-item>
-      <el-form-item label="广告位置：">
+      <el-form-item label="廣告位置：">
         <el-select v-model="homeAdvertise.type">
           <el-option
             v-for="type in typeOptions"
@@ -18,39 +18,39 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="开始时间：" prop="startTime">
+      <el-form-item label="開始時間：" prop="startTime">
         <el-date-picker
           type="datetime"
-          placeholder="选择日期"
+          placeholder="選擇日期"
           v-model="homeAdvertise.startTime"></el-date-picker>
       </el-form-item>
-      <el-form-item label="到期时间：" prop="endTime">
+      <el-form-item label="到期時間：" prop="endTime">
         <el-date-picker
           type="datetime"
-          placeholder="选择日期"
+          placeholder="選擇日期"
           v-model="homeAdvertise.endTime"></el-date-picker>
       </el-form-item>
-      <el-form-item label="上线/下线：">
+      <el-form-item label="上線/下線：">
         <el-radio-group v-model="homeAdvertise.status">
-          <el-radio :label="0">下线</el-radio>
-          <el-radio :label="1">上线</el-radio>
+          <el-radio :label="0">下線</el-radio>
+          <el-radio :label="1">上線</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="广告图片：">
+      <el-form-item label="廣告圖片：">
         <single-upload v-model="homeAdvertise.pic"></single-upload>
       </el-form-item>
       <el-form-item label="排序：">
         <el-input v-model="homeAdvertise.sort" class="input-width"></el-input>
       </el-form-item>
-      <el-form-item label="广告链接：" prop="url">
+      <el-form-item label="廣告鏈接：" prop="url">
         <el-input v-model="homeAdvertise.url" class="input-width"></el-input>
       </el-form-item>
-      <el-form-item label="广告备注：">
+      <el-form-item label="廣告備註：">
         <el-input
           class="input-width"
           type="textarea"
           :rows="5"
-          placeholder="请输入内容"
+          placeholder="請輸入內容"
           v-model="homeAdvertise.note">
         </el-input>
       </el-form-item>
@@ -66,11 +66,11 @@
   import {createHomeAdvertise, getHomeAdvertise, updateHomeAdvertise} from '@/api/homeAdvertise'
   const defaultTypeOptions = [
     {
-      label: 'PC首页轮播',
+      label: 'PC首頁輪播',
       value: 0
     },
     {
-      label: 'APP首页轮播',
+      label: 'APP首頁輪播',
       value: 1
     }
   ];
@@ -99,20 +99,20 @@
         homeAdvertise: null,
         rules: {
           name: [
-            {required: true, message: '请输入广告名称', trigger: 'blur'},
-            {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
+            {required: true, message: '請輸入廣告名稱', trigger: 'blur'},
+            {min: 2, max: 140, message: '長度在 2 到 140 個字符', trigger: 'blur'}
           ],
           url: [
-            {required: true, message: '请输入广告链接', trigger: 'blur'}
+            {required: true, message: '請輸入廣告鏈接', trigger: 'blur'}
           ],
           startTime: [
-            {required: true, message: '请选择开始时间', trigger: 'blur'}
+            {required: true, message: '請選擇開始時間', trigger: 'blur'}
           ],
           endTime: [
-            {required: true, message: '请选择到期时间', trigger: 'blur'}
+            {required: true, message: '請選擇到期時間', trigger: 'blur'}
           ],
           pic: [
-            {required: true, message: '请选择广告图片', trigger: 'blur'}
+            {required: true, message: '請選擇廣告圖片', trigger: 'blur'}
           ]
         },
         typeOptions: Object.assign({}, defaultTypeOptions)
@@ -131,8 +131,8 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$confirm('是否提交数据', '提示', {
-              confirmButtonText: '确定',
+            this.$confirm('是否提交數據', '提示', {
+              confirmButtonText: '確定',
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
@@ -161,7 +161,7 @@
 
           } else {
             this.$message({
-              message: '验证失败',
+              message: '驗證失敗',
               type: 'error',
               duration:1000
             });

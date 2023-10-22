@@ -25,9 +25,9 @@
   export default {
     name: 'multiUpload',
     props: {
-      //图片属性数组
+      //圖片屬性數組
       value: Array,
-      //最大上传图片数量
+      //最大上傳圖片數量
       maxCount:{
         type:Number,
         default:5
@@ -77,7 +77,7 @@
       beforeUpload(file) {
         let _self = this;
         if(!this.useOss){
-          //不使用oss不需要获取策略
+          //不使用oss不需要獲取策略
           return true;
         }
         return new Promise((resolve, reject) => {
@@ -98,7 +98,7 @@
       handleUploadSuccess(res, file) {
         let url = this.dataObj.host + '/' + this.dataObj.dir + '/' + file.name;
         if(!this.useOss){
-          //不使用oss直接获取图片路径
+          //不使用oss直接獲取圖片路徑
           url = res.data.url;
         }
         this.fileList.push({name: file.name,url:url});
@@ -106,7 +106,7 @@
       },
       handleExceed(files, fileList) {
         this.$message({
-          message: '最多只能上传'+this.maxCount+'张图片',
+          message: '最多只能上傳'+this.maxCount+'張圖片',
           type: 'warning',
           duration:1000
         });

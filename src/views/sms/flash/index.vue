@@ -3,13 +3,13 @@
     <el-card class="filter-container" shadow="never">
       <div>
         <i class="el-icon-search"></i>
-        <span>筛选搜索</span>
+        <span>篩選搜索</span>
         <el-button
           style="float:right"
           type="primary"
           @click="handleSearchList()"
           size="small">
-          查询搜索
+          查詢搜索
         </el-button>
         <el-button
           style="float:right;margin-right: 15px"
@@ -20,17 +20,17 @@
       </div>
       <div style="margin-top: 15px">
         <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-          <el-form-item label="活动名称：">
-            <el-input v-model="listQuery.keyword" class="input-width" placeholder="活动名称" clearable></el-input>
+          <el-form-item label="活動名稱：">
+            <el-input v-model="listQuery.keyword" class="input-width" placeholder="活動名稱" clearable></el-input>
           </el-form-item>
         </el-form>
       </div>
     </el-card>
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>数据列表</span>
-      <el-button size="mini" class="btn-add" @click="handleAdd()" style="margin-left: 20px">添加活动</el-button>
-      <el-button size="mini" class="btn-add" @click="handleShowSessionList()">秒杀时间段列表</el-button>
+      <span>數據列表</span>
+      <el-button size="mini" class="btn-add" @click="handleAdd()" style="margin-left: 20px">添加活動</el-button>
+      <el-button size="mini" class="btn-add" @click="handleShowSessionList()">秒殺時間段列表</el-button>
     </el-card>
     <div class="table-container">
       <el-table ref="flashTable"
@@ -38,22 +38,22 @@
                 style="width: 100%;"
                 v-loading="listLoading" border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="100" align="center">
+        <el-table-column label="編號" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="活动标题" align="center">
+        <el-table-column label="活動標題" align="center">
           <template slot-scope="scope">{{scope.row.title}}</template>
         </el-table-column>
-        <el-table-column label="活动状态" width="140" align="center">
+        <el-table-column label="活動狀態" width="140" align="center">
           <template slot-scope="scope">{{scope.row |formatActiveStatus}}</template>
         </el-table-column>
-        <el-table-column label="开始时间" width="140" align="center">
+        <el-table-column label="開始時間" width="140" align="center">
           <template slot-scope="scope">{{scope.row.startDate | formatDate}}</template>
         </el-table-column>
-        <el-table-column label="结束时间" width="140" align="center">
+        <el-table-column label="結束時間" width="140" align="center">
           <template slot-scope="scope">{{scope.row.endDate | formatDate}}</template>
         </el-table-column>
-        <el-table-column label="上线/下线" width="200" align="center">
+        <el-table-column label="上線/下線" width="200" align="center">
           <template slot-scope="scope">
             <el-switch
               @change="handleStatusChange(scope.$index, scope.row)"
@@ -67,16 +67,16 @@
           <template slot-scope="scope">
             <el-button size="mini"
                        type="text"
-                       @click="handleSelectSession(scope.$index, scope.row)">设置商品
+                       @click="handleSelectSession(scope.$index, scope.row)">設置商品
             </el-button>
             <el-button size="mini"
                        type="text"
                        @click="handleUpdate(scope.$index, scope.row)">
-              编辑
+              編輯
             </el-button>
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除
+                       @click="handleDelete(scope.$index, scope.row)">刪除
             </el-button>
           </template>
         </el-table-column>
@@ -95,39 +95,39 @@
       </el-pagination>
     </div>
     <el-dialog
-      title="添加活动"
+      title="添加活動"
       :visible.sync="dialogVisible"
       width="40%">
       <el-form :model="flashPromotion"
                ref="flashPromotionForm"
                label-width="150px" size="small">
-        <el-form-item label="活动标题：">
+        <el-form-item label="活動標題：">
           <el-input v-model="flashPromotion.title" style="width: 250px"></el-input>
         </el-form-item>
-        <el-form-item label="开始时间：">
+        <el-form-item label="開始時間：">
           <el-date-picker
             v-model="flashPromotion.startDate"
             type="date"
-            placeholder="请选择时间">
+            placeholder="請選擇時間">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="结束时间：">
+        <el-form-item label="結束時間：">
           <el-date-picker
             v-model="flashPromotion.endDate"
             type="date"
-            placeholder="请选择时间">
+            placeholder="請選擇時間">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="上线/下线">
+        <el-form-item label="上線/下線">
           <el-radio-group v-model="flashPromotion.status">
-            <el-radio :label="1">上线</el-radio>
-            <el-radio :label="0">下线</el-radio>
+            <el-radio :label="1">上線</el-radio>
+            <el-radio :label="0">下線</el-radio>
           </el-radio-group>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false" size="small">取 消</el-button>
-        <el-button type="primary" @click="handleDialogConfirm()" size="small">确 定</el-button>
+        <el-button type="primary" @click="handleDialogConfirm()" size="small">確 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -168,11 +168,11 @@
       formatActiveStatus(row) {
         let nowTime = new Date().getTime();
         if (nowTime >= row.startDate && nowTime <= row.endDate) {
-          return '活动进行中';
+          return '活動進行中';
         } else if (nowTime > row.endDate) {
-          return '活动已结束';
+          return '活動已結束';
         } else {
-          return '活动未开始';
+          return '活動未開始';
         }
       },
       formatDate(time) {
@@ -209,8 +209,8 @@
         this.$router.push({path: '/sms/flashSession'})
       },
       handleStatusChange(index, row) {
-        this.$confirm('是否要修改该状态?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要修改該狀態?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -229,15 +229,15 @@
         });
       },
       handleDelete(index, row) {
-        this.$confirm('是否要删除该活动?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要刪除該活動?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
           deleteFlash(row.id).then(response => {
             this.$message({
               type: 'success',
-              message: '删除成功!'
+              message: '刪除成功!'
             });
             this.getList();
           });
@@ -249,8 +249,8 @@
         this.flashPromotion = Object.assign({},row);
       },
       handleDialogConfirm() {
-        this.$confirm('是否要确认?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要確認?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {

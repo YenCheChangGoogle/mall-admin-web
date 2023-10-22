@@ -3,26 +3,26 @@
     <el-card class="filter-container" shadow="never">
         <div>
           <i class="el-icon-search"></i>
-          <span>筛选搜索</span>
+          <span>篩選搜索</span>
           <el-button
             style="float: right"
             @click="searchBrandList()"
             type="primary"
             size="small">
-            查询结果
+            查詢結果
           </el-button>
         </div>
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-            <el-form-item label="输入搜索：">
-              <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="品牌名称/关键字"></el-input>
+            <el-form-item label="輸入搜索：">
+              <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="品牌名稱/關鍵字"></el-input>
             </el-form-item>
           </el-form>
         </div>
     </el-card>
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>数据列表</span>
+      <span>數據列表</span>
       <el-button
         class="btn-add"
         @click="addBrand()"
@@ -38,10 +38,10 @@
                 v-loading="listLoading"
                 border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="100" align="center">
+        <el-table-column label="編號" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="品牌名称" align="center">
+        <el-table-column label="品牌名稱" align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
         <el-table-column label="品牌首字母" width="100" align="center">
@@ -50,7 +50,7 @@
         <el-table-column label="排序" width="100" align="center">
           <template slot-scope="scope">{{scope.row.sort}}</template>
         </el-table-column>
-        <el-table-column label="品牌制造商" width="100" align="center">
+        <el-table-column label="品牌製造商" width="100" align="center">
           <template slot-scope="scope">
             <el-switch
               @change="handleFactoryStatusChange(scope.$index, scope.row)"
@@ -60,7 +60,7 @@
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="是否显示" width="100" align="center">
+        <el-table-column label="是否顯示" width="100" align="center">
           <template slot-scope="scope">
             <el-switch
               @change="handleShowStatusChange(scope.$index, scope.row)"
@@ -70,7 +70,7 @@
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="相关" width="220" align="center">
+        <el-table-column label="相關" width="220" align="center">
           <template slot-scope="scope">
             <span>商品：</span>
             <el-button
@@ -78,7 +78,7 @@
               type="text"
               @click="getProductList(scope.$index, scope.row)">100
             </el-button>
-            <span>评价：</span>
+            <span>評價：</span>
             <el-button
               size="mini"
               type="text"
@@ -90,12 +90,12 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="handleUpdate(scope.$index, scope.row)">编辑
+              @click="handleUpdate(scope.$index, scope.row)">編輯
             </el-button>
             <el-button
               size="mini"
               type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除
+              @click="handleDelete(scope.$index, scope.row)">刪除
             </el-button>
           </template>
         </el-table-column>
@@ -118,7 +118,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        確定
       </el-button>
     </div>
     <div class="pagination-container">
@@ -144,11 +144,11 @@
       return {
         operates: [
           {
-            label: "显示品牌",
+            label: "顯示品牌",
             value: "showBrand"
           },
           {
-            label: "隐藏品牌",
+            label: "隱藏品牌",
             value: "hideBrand"
           }
         ],
@@ -185,14 +185,14 @@
         this.$router.push({path: '/pms/updateBrand', query: {id: row.id}})
       },
       handleDelete(index, row) {
-        this.$confirm('是否要删除该品牌', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要刪除該品牌', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
           deleteBrand(row.id).then(response => {
             this.$message({
-              message: '删除成功',
+              message: '刪除成功',
               type: 'success',
               duration: 1000
             });
@@ -260,7 +260,7 @@
         console.log(this.multipleSelection);
         if (this.multipleSelection < 1) {
           this.$message({
-            message: '请选择一条记录',
+            message: '請選擇一條記錄',
             type: 'warning',
             duration: 1000
           });
@@ -273,7 +273,7 @@
           showStatus = 0;
         } else {
           this.$message({
-            message: '请选择批量操作类型',
+            message: '請選擇批量操作類型',
             type: 'warning',
             duration: 1000
           });

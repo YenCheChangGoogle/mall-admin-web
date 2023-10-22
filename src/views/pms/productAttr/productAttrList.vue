@@ -3,7 +3,7 @@
     <el-card class="operate-container" shadow="never">
 
       <i class="el-icon-tickets" style="margin-top: 5px"></i>
-      <span style="margin-top: 5px">数据列表</span>
+      <span style="margin-top: 5px">數據列表</span>
       <el-button
         class="btn-add"
         @click="addProductAttr()"
@@ -19,22 +19,22 @@
                 v-loading="listLoading"
                 border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="100" align="center">
+        <el-table-column label="編號" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="属性名称" width="140" align="center">
+        <el-table-column label="屬性名稱" width="140" align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
-        <el-table-column label="商品类型" width="140" align="center">
+        <el-table-column label="商品類型" width="140" align="center">
           <template slot-scope="scope">{{$route.query.cname}}</template>
         </el-table-column>
-        <el-table-column label="属性是否可选" width="120" align="center">
+        <el-table-column label="屬性是否可選" width="120" align="center">
           <template slot-scope="scope">{{scope.row.selectType|selectTypeFilter}}</template>
         </el-table-column>
-        <el-table-column label="属性值的录入方式" width="150" align="center">
+        <el-table-column label="屬性值的錄入方式" width="150" align="center">
           <template slot-scope="scope">{{scope.row.inputType|inputTypeFilter}}</template>
         </el-table-column>
-        <el-table-column label="可选值列表" align="center">
+        <el-table-column label="可選值列表" align="center">
           <template slot-scope="scope">{{scope.row.inputList}}</template>
         </el-table-column>
         <el-table-column label="排序" width="100" align="center">
@@ -44,12 +44,12 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="handleUpdate(scope.$index, scope.row)">编辑
+              @click="handleUpdate(scope.$index, scope.row)">編輯
             </el-button>
             <el-button
               size="mini"
               type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除
+              @click="handleDelete(scope.$index, scope.row)">刪除
             </el-button>
           </template>
         </el-table-column>
@@ -72,7 +72,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        確定
       </el-button>
     </div>
     <div class="pagination-container">
@@ -108,7 +108,7 @@
         multipleSelection: [],
         operates: [
           {
-            label: "删除",
+            label: "刪除",
             value: "deleteProductAttr"
           }
         ]
@@ -135,7 +135,7 @@
       handleBatchOperate() {
         if (this.multipleSelection < 1) {
           this.$message({
-            message: '请选择一条记录',
+            message: '請選擇一條記錄',
             type: 'warning',
             duration: 1000
           });
@@ -143,7 +143,7 @@
         }
         if (this.operateType !== 'deleteProductAttr') {
           this.$message({
-            message: '请选择批量操作类型',
+            message: '請選擇批量操作類型',
             type: 'warning',
             duration: 1000
           });
@@ -168,8 +168,8 @@
         this.$router.push({path:'/pms/updateProductAttr',query:{id:row.id}});
       },
       handleDeleteProductAttr(ids) {
-        this.$confirm('是否要删除该属性', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要刪除該屬性', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -177,7 +177,7 @@
           data.append("ids", ids);
           deleteProductAttr(data).then(response => {
             this.$message({
-              message: '删除成功',
+              message: '刪除成功',
               type: 'success',
               duration: 1000
             });
@@ -194,16 +194,16 @@
     filters: {
       inputTypeFilter(value) {
         if (value === 1) {
-          return '从列表中选取';
+          return '從列表中選取';
         } else {
-          return '手工录入'
+          return '手工錄入'
         }
       },
       selectTypeFilter(value) {
         if (value === 1) {
-          return '单选';
+          return '單選';
         } else if (value === 2) {
-          return '多选';
+          return '多選';
         } else {
           return '唯一'
         }

@@ -3,13 +3,13 @@
     <el-card class="filter-container" shadow="never">
       <div>
         <i class="el-icon-search"></i>
-        <span>筛选搜索</span>
+        <span>篩選搜索</span>
         <el-button
           style="float:right"
           type="primary"
           @click="handleSearchList()"
           size="small">
-          查询搜索
+          查詢搜索
         </el-button>
         <el-button
           style="float:right;margin-right: 15px"
@@ -20,10 +20,10 @@
       </div>
       <div style="margin-top: 15px">
         <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-          <el-form-item label="优惠券名称：">
-            <el-input v-model="listQuery.name" class="input-width" placeholder="优惠券名称"></el-input>
+          <el-form-item label="優惠券名稱：">
+            <el-input v-model="listQuery.name" class="input-width" placeholder="優惠券名稱"></el-input>
           </el-form-item>
-          <el-form-item label="优惠券类型：">
+          <el-form-item label="優惠券類型：">
             <el-select v-model="listQuery.type" placeholder="全部" clearable class="input-width">
               <el-option v-for="item in typeOptions"
                          :key="item.value"
@@ -37,7 +37,7 @@
     </el-card>
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>数据列表</span>
+      <span>數據列表</span>
       <el-button size="mini" class="btn-add" @click="handleAdd()">添加</el-button>
     </el-card>
     <div class="table-container">
@@ -47,31 +47,31 @@
                 @selection-change="handleSelectionChange"
                 v-loading="listLoading" border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="100" align="center">
+        <el-table-column label="編號" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="优惠劵名称" align="center">
+        <el-table-column label="優惠券名稱" align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
-        <el-table-column label="优惠券类型" width="100" align="center">
+        <el-table-column label="優惠券類型" width="100" align="center">
           <template slot-scope="scope">{{scope.row.type | formatType}}</template>
         </el-table-column>
         <el-table-column label="可使用商品" width="100" align="center">
           <template slot-scope="scope">{{scope.row.useType | formatUseType}}</template>
         </el-table-column>
-        <el-table-column label="使用门槛" width="140" align="center">
-          <template slot-scope="scope">满{{scope.row.minPoint}}元可用</template>
+        <el-table-column label="使用門檻" width="140" align="center">
+          <template slot-scope="scope">滿{{scope.row.minPoint}}元可用</template>
         </el-table-column>
         <el-table-column label="面值" width="100" align="center">
           <template slot-scope="scope">{{scope.row.amount}}元</template>
         </el-table-column>
-        <el-table-column label="适用平台" width="100" align="center">
+        <el-table-column label="適用平台" width="100" align="center">
           <template slot-scope="scope">{{scope.row.platform | formatPlatform}}</template>
         </el-table-column>
         <el-table-column label="有效期" width="180" align="center">
           <template slot-scope="scope">{{scope.row.startTime|formatDate}}至{{scope.row.endTime|formatDate}}</template>
         </el-table-column>
-        <el-table-column label="状态" width="100" align="center">
+        <el-table-column label="狀態" width="100" align="center">
           <template slot-scope="scope">{{scope.row.endTime | formatStatus}}</template>
         </el-table-column>
         <el-table-column label="操作" width="180" align="center">
@@ -82,10 +82,10 @@
             <el-button size="mini"
                        type="text"
                        @click="handleUpdate(scope.$index, scope.row)">
-              编辑</el-button>
+              編輯</el-button>
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                       @click="handleDelete(scope.$index, scope.row)">刪除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -115,19 +115,19 @@
   };
   const defaultTypeOptions=[
     {
-      label: '全场赠券',
+      label: '全場贈券',
       value: 0
     },
     {
-      label: '会员赠券',
+      label: '會員贈券',
       value: 1
     },
     {
-      label: '购物赠券',
+      label: '購物贈券',
       value: 2
     },
     {
-      label: '注册赠券',
+      label: '註冊贈券',
       value: 3
     }
   ];
@@ -157,16 +157,16 @@
       },
       formatUseType(useType){
         if(useType===0){
-          return '全场通用';
+          return '全場通用';
         }else if(useType===1){
-          return '指定分类';
+          return '指定分類';
         }else{
           return '指定商品';
         }
       },
       formatPlatform(platform){
         if(platform===1){
-          return '移动平台';
+          return '移動平台';
         }else if(platform===2){
           return 'PC平台';
         }else{
@@ -184,9 +184,9 @@
         let now = new Date().getTime();
         let endDate = new Date(endTime);
         if(endDate>now){
-          return '未过期'
+          return '未過期'
         }else{
-          return '已过期';
+          return '已過期';
         }
       }
     },
@@ -220,15 +220,15 @@
         this.$router.push({path: '/sms/updateCoupon', query: {id: row.id}})
       },
       handleDelete(index, row) {
-        this.$confirm('是否进行删除操作?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否進行刪除操作?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
           deleteCoupon(row.id).then(response=>{
             this.$message({
               type: 'success',
-              message: '删除成功!'
+              message: '刪除成功!'
             });
             this.getList();
           });

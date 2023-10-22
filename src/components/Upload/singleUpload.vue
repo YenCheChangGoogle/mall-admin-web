@@ -10,8 +10,8 @@
       :on-remove="handleRemove"
       :on-success="handleUploadSuccess"
       :on-preview="handlePreview">
-      <el-button size="small" type="primary">点击上传</el-button>
-      <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过10MB</div>
+      <el-button size="small" type="primary">點擊上傳</el-button>
+      <div slot="tip" class="el-upload__tip">只能上傳jpg/png文件，且不超過10MB</div>
     </el-upload>
     <el-dialog :visible.sync="dialogVisible">
       <img width="100%" :src="fileList[0].url" alt="">
@@ -81,7 +81,7 @@
       beforeUpload(file) {
         let _self = this;
         if(!this.useOss){
-          //不使用oss不需要获取策略
+          //不使用oss不需要獲取策略
           return true;
         }
         return new Promise((resolve, reject) => {
@@ -105,7 +105,7 @@
         this.fileList.pop();
         let url = this.dataObj.host + '/' + this.dataObj.dir + '/' + file.name;
         if(!this.useOss){
-          //不使用oss直接获取图片路径
+          //不使用oss直接獲取圖片路徑
           url = res.data.url;
         }
         this.fileList.push({name: file.name, url: url});

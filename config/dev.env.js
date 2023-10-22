@@ -9,9 +9,9 @@ module.exports = merge(prodEnv, {
   
   入口點 http://localhost:8090
   
-  搭建步骤
+  搭建步驟
   
-  █ 
+  ▓ 
   因為有些函式庫的相依問題需要配合特定的node版本 因此需要安裝NVM環境 來管理不同版本的node
   安裝NVM環境 nvm-setup.exe 
     nvm install 輸入要安裝的版本	：安裝特定版本的 Node.js
@@ -23,7 +23,7 @@ module.exports = merge(prodEnv, {
 	npm install -g node-sass@6.0.1
 	
 	
-  █ 
+  ▓ 
   - 下載node並安裝：[https://nodejs.org/dist/v12.14.0/node-v12.14.0-x64.msi](https://nodejs.org/dist/v12.14.0/node-v12.14.0-x64.msi)
   
   - 該項目為前後端分離項目 後端可以是 一般後臺環境 或是 微服務後臺環境 

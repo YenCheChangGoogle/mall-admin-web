@@ -3,13 +3,13 @@
     <el-card class="filter-container" shadow="never">
       <div>
         <i class="el-icon-search"></i>
-        <span>筛选搜索</span>
+        <span>篩選搜索</span>
         <el-button
           style="float:right"
           type="primary"
           @click="handleSearchList()"
           size="small">
-          查询搜索
+          查詢搜索
         </el-button>
         <el-button
           style="float:right;margin-right: 15px"
@@ -20,10 +20,10 @@
       </div>
       <div style="margin-top: 15px">
         <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-          <el-form-item label="广告名称：">
-            <el-input v-model="listQuery.name" class="input-width" placeholder="广告名称"></el-input>
+          <el-form-item label="廣告名稱：">
+            <el-input v-model="listQuery.name" class="input-width" placeholder="廣告名稱"></el-input>
           </el-form-item>
-          <el-form-item label="广告位置：">
+          <el-form-item label="廣告位置：">
             <el-select v-model="listQuery.type" placeholder="全部" clearable class="input-width">
               <el-option v-for="item in typeOptions"
                          :key="item.value"
@@ -32,13 +32,13 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="到期时间：">
+          <el-form-item label="到期時間：">
             <el-date-picker
               class="input-width"
               v-model="listQuery.endTime"
               value-format="yyyy-MM-dd"
               type="date"
-              placeholder="请选择时间">
+              placeholder="請選擇時間">
             </el-date-picker>
           </el-form-item>
         </el-form>
@@ -46,8 +46,8 @@
     </el-card>
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>数据列表</span>
-      <el-button size="mini" class="btn-add" @click="handleAdd()">添加广告</el-button>
+      <span>數據列表</span>
+      <el-button size="mini" class="btn-add" @click="handleAdd()">添加廣告</el-button>
     </el-card>
     <div class="table-container">
       <el-table ref="homeAdvertiseTable"
@@ -56,25 +56,25 @@
                 @selection-change="handleSelectionChange"
                 v-loading="listLoading" border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="120" align="center">
+        <el-table-column label="編號" width="120" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="广告名称" align="center">
+        <el-table-column label="廣告名稱" align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
-        <el-table-column label="广告位置" width="120" align="center">
+        <el-table-column label="廣告位置" width="120" align="center">
           <template slot-scope="scope">{{scope.row.type | formatType}}</template>
         </el-table-column>
-        <el-table-column label="广告图片" width="120" align="center">
+        <el-table-column label="廣告圖片" width="120" align="center">
           <template slot-scope="scope"><img style="height: 80px" :src="scope.row.pic"></template>
         </el-table-column>
-        <el-table-column label="时间" width="220" align="center">
+        <el-table-column label="時間" width="220" align="center">
           <template slot-scope="scope">
-            <p>开始时间：{{scope.row.startTime | formatTime}}</p>
-            <p>到期时间：{{scope.row.endTime | formatTime}}</p>
+            <p>開始時間：{{scope.row.startTime | formatTime}}</p>
+            <p>到期時間：{{scope.row.endTime | formatTime}}</p>
           </template>
         </el-table-column>
-        <el-table-column label="上线/下线" width="120" align="center">
+        <el-table-column label="上線/下線" width="120" align="center">
           <template slot-scope="scope">
             <el-switch
               @change="handleUpdateStatus(scope.$index, scope.row)"
@@ -84,21 +84,21 @@
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="点击次数" width="120" align="center">
+        <el-table-column label="點擊次數" width="120" align="center">
           <template slot-scope="scope">{{scope.row.clickCount}}</template>
         </el-table-column>
-        <el-table-column label="生成订单" width="120" align="center">
+        <el-table-column label="生成訂單" width="120" align="center">
           <template slot-scope="scope">{{scope.row.orderCount}}</template>
         </el-table-column>
         <el-table-column label="操作" width="120" align="center">
           <template slot-scope="scope">
             <el-button size="mini"
                        type="text"
-                       @click="handleUpdate(scope.$index, scope.row)">编辑
+                       @click="handleUpdate(scope.$index, scope.row)">編輯
             </el-button>
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除
+                       @click="handleDelete(scope.$index, scope.row)">刪除
             </el-button>
           </template>
         </el-table-column>
@@ -121,7 +121,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        確定
       </el-button>
     </div>
     <div class="pagination-container">
@@ -150,11 +150,11 @@
   };
   const defaultTypeOptions = [
     {
-      label: 'PC首页轮播',
+      label: 'PC首頁輪播',
       value: 0
     },
     {
-      label: 'APP首页轮播',
+      label: 'APP首頁輪播',
       value: 1
     }
   ];
@@ -170,7 +170,7 @@
         multipleSelection: [],
         operates: [
           {
-            label: "删除",
+            label: "刪除",
             value: 0
           }
         ],
@@ -183,9 +183,9 @@
     filters:{
       formatType(type){
         if(type===1){
-          return 'APP首页轮播';
+          return 'APP首頁輪播';
         }else{
-          return 'PC首页轮播';
+          return 'PC首頁輪播';
         }
       },
       formatTime(time){
@@ -217,8 +217,8 @@
         this.getList();
       },
       handleUpdateStatus(index,row){
-        this.$confirm('是否要修改上线/下线状态?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要修改上線/下線狀態?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -243,7 +243,7 @@
       handleBatchOperate(){
         if (this.multipleSelection < 1) {
           this.$message({
-            message: '请选择一条记录',
+            message: '請選擇一條記錄',
             type: 'warning',
             duration: 1000
           });
@@ -254,11 +254,11 @@
           ids.push(this.multipleSelection[i].id);
         }
         if(this.operateType===0){
-          //删除
+          //刪除
           this.deleteHomeAdvertise(ids);
         }else {
           this.$message({
-            message: '请选择批量操作类型',
+            message: '請選擇批量操作類型',
             type: 'warning',
             duration: 1000
           });
@@ -279,8 +279,8 @@
         })
       },
       deleteHomeAdvertise(ids){
-        this.$confirm('是否要删除该广告?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要刪除該廣告?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -290,7 +290,7 @@
             this.getList();
             this.$message({
               type: 'success',
-              message: '删除成功!'
+              message: '刪除成功!'
             });
           });
         })

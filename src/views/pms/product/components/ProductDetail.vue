@@ -1,10 +1,10 @@
 <template> 
   <el-card class="form-container" shadow="never">
     <el-steps :active="active" finish-status="success" align-center>
-      <el-step title="填写商品信息"></el-step>
-      <el-step title="填写商品促销"></el-step>
-      <el-step title="填写商品属性"></el-step>
-      <el-step title="选择商品关联"></el-step>
+      <el-step title="填寫商品信息"></el-step>
+      <el-step title="填寫商品促銷"></el-step>
+      <el-step title="填寫商品屬性"></el-step>
+      <el-step title="選擇商品關聯"></el-step>
     </el-steps>
     <product-info-detail
       v-show="showStatus[0]"
@@ -66,22 +66,22 @@
     note: '',
     originalPrice: 0,
     pic: '',
-    //会员价格{memberLevelId: 0,memberPrice: 0,memberLevelName: null}
+    //會員價格{memberLevelId: 0,memberPrice: 0,memberLevelName: null}
     memberPriceList: [],
-    //商品满减
+    //商品滿減
     productFullReductionList: [{fullPrice: 0, reducePrice: 0}],
-    //商品阶梯价格
+    //商品階梯價格
     productLadderList: [{count: 0,discount: 0,price: 0}],
     previewStatus: 0,
     price: 0,
     productAttributeCategoryId: null,
-    //商品属性相关{productAttributeId: 0, value: ''}
+    //商品屬性相關{productAttributeId: 0, value: ''}
     productAttributeValueList: [],
-    //商品sku库存信息{lowStock: 0, pic: '', price: 0, sale: 0, skuCode: '', spData: '', stock: 0}
+    //商品sku庫存信息{lowStock: 0, pic: '', price: 0, sale: 0, skuCode: '', spData: '', stock: 0}
     skuStockList: [],
-    //商品相关专题{subjectId: 0}
+    //商品相關專題{subjectId: 0}
     subjectProductRelationList: [],
-    //商品相关优选{prefrenceAreaId: 0}
+    //商品相關優選{prefrenceAreaId: 0}
     prefrenceAreaProductRelationList: [],
     productCategoryId: null,
     productCategoryName: '',
@@ -147,8 +147,8 @@
         }
       },
       finishCommit(isEdit) {
-        this.$confirm('是否要提交该产品', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要提交該產品', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {

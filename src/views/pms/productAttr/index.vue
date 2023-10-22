@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets" style="margin-top: 5px"></i>
-      <span style="margin-top: 5px">数据列表</span>
+      <span style="margin-top: 5px">數據列表</span>
       <el-button
         class="btn-add"
         @click="addProductAttrCate()"
@@ -16,27 +16,27 @@
                 :data="list"
                 v-loading="listLoading"
                 border>
-        <el-table-column label="编号" width="100" align="center">
+        <el-table-column label="編號" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="类型名称" align="center">
+        <el-table-column label="類型名稱" align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
-        <el-table-column label="属性数量" width="200" align="center">
+        <el-table-column label="屬性數量" width="200" align="center">
           <template slot-scope="scope">{{scope.row.attributeCount==null?0:scope.row.attributeCount}}</template>
         </el-table-column>
-        <el-table-column label="参数数量" width="200" align="center">
+        <el-table-column label="參數數量" width="200" align="center">
           <template slot-scope="scope">{{scope.row.paramCount==null?0:scope.row.paramCount}}</template>
         </el-table-column>
-        <el-table-column label="设置" width="200" align="center">
+        <el-table-column label="設置" width="200" align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="getAttrList(scope.$index, scope.row)">属性列表
+              @click="getAttrList(scope.$index, scope.row)">屬性列表
             </el-button>
             <el-button
               size="mini"
-              @click="getParamList(scope.$index, scope.row)">参数列表
+              @click="getParamList(scope.$index, scope.row)">參數列表
             </el-button>
           </template>
         </el-table-column>
@@ -44,12 +44,12 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="handleUpdate(scope.$index, scope.row)">编辑
+              @click="handleUpdate(scope.$index, scope.row)">編輯
             </el-button>
             <el-button
               size="mini"
               type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除
+              @click="handleDelete(scope.$index, scope.row)">刪除
             </el-button>
           </template>
         </el-table-column>
@@ -73,13 +73,13 @@
       :before-close="handleClose()"
       width="30%">
       <el-form ref="productAttrCatForm":model="productAttrCate" :rules="rules" label-width="120px">
-        <el-form-item label="类型名称" prop="name">
+        <el-form-item label="類型名稱" prop="name">
           <el-input v-model="productAttrCate.name" auto-complete="off"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="handleConfirm('productAttrCatForm')">确 定</el-button>
+        <el-button type="primary" @click="handleConfirm('productAttrCatForm')">確 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -106,7 +106,7 @@
         },
         rules: {
           name: [
-            { required: true, message: '请输入类型名称', trigger: 'blur' }
+            { required: true, message: '請輸入類型名稱', trigger: 'blur' }
           ]
         }
       }
@@ -125,7 +125,7 @@
       },
       addProductAttrCate() {
         this.dialogVisible = true;
-        this.dialogTitle = "添加类型";
+        this.dialogTitle = "添加類型";
       },
       handleSizeChange(val) {
         this.listQuery.pageNum = 1;
@@ -137,14 +137,14 @@
         this.getList();
       },
       handleDelete(index, row) {
-        this.$confirm('是否要删除该品牌', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要刪除該品牌', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
           deleteProductAttrCate(row.id).then(response=>{
             this.$message({
-              message: '删除成功',
+              message: '刪除成功',
               type: 'success',
               duration:1000
             });
@@ -154,7 +154,7 @@
       },
       handleUpdate(index, row) {
         this.dialogVisible = true;
-        this.dialogTitle = "编辑类型";
+        this.dialogTitle = "編輯類型";
         this.productAttrCate.name = row.name;
         this.productAttrCate.id = row.id;
       },
@@ -169,7 +169,7 @@
           if (valid) {
             let data = new URLSearchParams();
             data.append("name",this.productAttrCate.name);
-            if(this.dialogTitle==="添加类型"){
+            if(this.dialogTitle==="添加類型"){
               createProductAttrCate(data).then(response=>{
                 this.$message({
                   message: '添加成功',

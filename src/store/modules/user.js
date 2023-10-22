@@ -25,7 +25,7 @@ const user = {
   },
 
   actions: {
-    // 登录
+    // 登錄
     Login({ commit }, userInfo) {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
@@ -41,12 +41,12 @@ const user = {
       })
     },
 
-    // 获取用户信息
+    // 獲取用戶信息
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getInfo().then(response => {
           const data = response.data
-          if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
+          if (data.roles && data.roles.length > 0) { // 驗證返回的roles是否是一個非空數組
             commit('SET_ROLES', data.roles)
           } else {
             reject('getInfo: roles must be a non-null array !')

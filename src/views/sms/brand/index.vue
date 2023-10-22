@@ -3,13 +3,13 @@
     <el-card class="filter-container" shadow="never">
       <div>
         <i class="el-icon-search"></i>
-        <span>筛选搜索</span>
+        <span>篩選搜索</span>
         <el-button
           style="float:right"
           type="primary"
           @click="handleSearchList()"
           size="small">
-          查询搜索
+          查詢搜索
         </el-button>
         <el-button
           style="float:right;margin-right: 15px"
@@ -20,10 +20,10 @@
       </div>
       <div style="margin-top: 15px">
         <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-          <el-form-item label="品牌名称：">
-            <el-input v-model="listQuery.brandName" class="input-width" placeholder="品牌名称"></el-input>
+          <el-form-item label="品牌名稱：">
+            <el-input v-model="listQuery.brandName" class="input-width" placeholder="品牌名稱"></el-input>
           </el-form-item>
-          <el-form-item label="推荐状态：">
+          <el-form-item label="推薦狀態：">
             <el-select v-model="listQuery.recommendStatus" placeholder="全部" clearable class="input-width">
               <el-option v-for="item in recommendOptions"
                          :key="item.value"
@@ -37,8 +37,8 @@
     </el-card>
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>数据列表</span>
-      <el-button size="mini" class="btn-add" @click="handleSelectBrand()">选择品牌</el-button>
+      <span>數據列表</span>
+      <el-button size="mini" class="btn-add" @click="handleSelectBrand()">選擇品牌</el-button>
     </el-card>
     <div class="table-container">
       <el-table ref="homeBrandTable"
@@ -47,13 +47,13 @@
                 @selection-change="handleSelectionChange"
                 v-loading="listLoading" border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="120" align="center">
+        <el-table-column label="編號" width="120" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="品牌名称" align="center">
+        <el-table-column label="品牌名稱" align="center">
           <template slot-scope="scope">{{scope.row.brandName}}</template>
         </el-table-column>
-        <el-table-column label="是否推荐" width="200" align="center">
+        <el-table-column label="是否推薦" width="200" align="center">
           <template slot-scope="scope">
             <el-switch
             @change="handleRecommendStatusStatusChange(scope.$index, scope.row)"
@@ -66,18 +66,18 @@
         <el-table-column label="排序" width="160" align="center">
           <template slot-scope="scope">{{scope.row.sort}}</template>
         </el-table-column>
-        <el-table-column label="状态" width="160" align="center">
+        <el-table-column label="狀態" width="160" align="center">
           <template slot-scope="scope">{{scope.row.recommendStatus | formatRecommendStatus}}</template>
         </el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template slot-scope="scope">
             <el-button size="mini"
                        type="text"
-                       @click="handleEditSort(scope.$index, scope.row)">设置排序
+                       @click="handleEditSort(scope.$index, scope.row)">設置排序
             </el-button>
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除
+                       @click="handleDelete(scope.$index, scope.row)">刪除
             </el-button>
           </template>
         </el-table-column>
@@ -100,7 +100,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        確定
       </el-button>
     </div>
     <div class="pagination-container">
@@ -115,23 +115,23 @@
         :total="total">
       </el-pagination>
     </div>
-    <el-dialog title="选择品牌" :visible.sync="selectDialogVisible" width="40%">
+    <el-dialog title="選擇品牌" :visible.sync="selectDialogVisible" width="40%">
       <el-input v-model="dialogData.listQuery.keyword"
                 style="width: 250px;margin-bottom: 20px"
                 size="small"
-                placeholder="品牌名称搜索">
+                placeholder="品牌名稱搜索">
         <el-button slot="append" icon="el-icon-search" @click="handleSelectSearch()"></el-button>
       </el-input>
       <el-table :data="dialogData.list"
                 @selection-change="handleDialogSelectionChange" border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="品牌名称"align="center">
+        <el-table-column label="品牌名稱"align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
-        <el-table-column label="相关" width="220" align="center">
+        <el-table-column label="相關" width="220" align="center">
           <template slot-scope="scope">
             商品：<span class="color-main">{{scope.row.productCount}}</span>
-            评价：<span class="color-main">{{scope.row.productCommentCount}}</span>
+            評價：<span class="color-main">{{scope.row.productCommentCount}}</span>
           </template>
         </el-table-column>
       </el-table>
@@ -150,10 +150,10 @@
       <div style="clear: both;"></div>
       <div slot="footer">
         <el-button  size="small" @click="selectDialogVisible = false">取 消</el-button>
-        <el-button  size="small" type="primary" @click="handleSelectDialogConfirm()">确 定</el-button>
+        <el-button  size="small" type="primary" @click="handleSelectDialogConfirm()">確 定</el-button>
       </div>
     </el-dialog>
-    <el-dialog title="设置排序"
+    <el-dialog title="設置排序"
                :visible.sync="sortDialogVisible"
                width="40%">
       <el-form :model="sortDialogData"
@@ -164,7 +164,7 @@
       </el-form>
       <span slot="footer">
         <el-button @click="sortDialogVisible = false" size="small">取 消</el-button>
-        <el-button type="primary" @click="handleUpdateSort" size="small">确 定</el-button>
+        <el-button type="primary" @click="handleUpdateSort" size="small">確 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -181,11 +181,11 @@
   };
   const defaultRecommendOptions = [
     {
-      label: '未推荐',
+      label: '未推薦',
       value: 0
     },
     {
-      label: '推荐中',
+      label: '推薦中',
       value: 1
     }
   ];
@@ -201,15 +201,15 @@
         multipleSelection: [],
         operates: [
           {
-            label: "设为推荐",
+            label: "設為推薦",
             value: 0
           },
           {
-            label: "取消推荐",
+            label: "取消推薦",
             value: 1
           },
           {
-            label: "删除",
+            label: "刪除",
             value: 2
           }
         ],
@@ -235,9 +235,9 @@
     filters:{
       formatRecommendStatus(status){
         if(status===1){
-          return '推荐中';
+          return '推薦中';
         }else{
-          return '未推荐';
+          return '未推薦';
         }
       }
     },
@@ -270,7 +270,7 @@
       handleBatchOperate(){
         if (this.multipleSelection < 1) {
           this.$message({
-            message: '请选择一条记录',
+            message: '請選擇一條記錄',
             type: 'warning',
             duration: 1000
           });
@@ -281,17 +281,17 @@
           ids.push(this.multipleSelection[i].id);
         }
         if (this.operateType === 0) {
-          //设为推荐
+          //設為推薦
           this.updateRecommendStatusStatus(ids,1);
         } else if (this.operateType === 1) {
-          //取消推荐
+          //取消推薦
           this.updateRecommendStatusStatus(ids,0);
         } else if(this.operateType===2){
-          //删除
+          //刪除
           this.deleteBrand(ids);
         }else {
           this.$message({
-            message: '请选择批量操作类型',
+            message: '請選擇批量操作類型',
             type: 'warning',
             duration: 1000
           });
@@ -320,7 +320,7 @@
       handleSelectDialogConfirm(){
         if (this.dialogData.multipleSelection < 1) {
           this.$message({
-            message: '请选择一条记录',
+            message: '請選擇一條記錄',
             type: 'warning',
             duration: 1000
           });
@@ -333,8 +333,8 @@
             brandName:this.dialogData.multipleSelection[i].name
           });
         }
-        this.$confirm('使用要进行添加操作?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('使用要進行添加操作?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -356,7 +356,7 @@
       },
       handleUpdateSort(){
         this.$confirm('是否要修改排序?', '提示', {
-          confirmButtonText: '确定',
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -365,7 +365,7 @@
             this.getList();
             this.$message({
               type: 'success',
-              message: '删除成功!'
+              message: '刪除成功!'
             });
           });
         })
@@ -379,8 +379,8 @@
         })
       },
       updateRecommendStatusStatus(ids,status){
-        this.$confirm('是否要修改推荐状态?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要修改推薦狀態?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -403,8 +403,8 @@
         });
       },
       deleteBrand(ids){
-        this.$confirm('是否要删除该推荐?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要刪除該推薦?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -414,7 +414,7 @@
             this.getList();
             this.$message({
               type: 'success',
-              message: '删成功!'
+              message: '刪成功!'
             });
           });
         })

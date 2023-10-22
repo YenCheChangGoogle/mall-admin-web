@@ -4,35 +4,35 @@
              ref="orderSettingForm"
              :rules="rules"
              label-width="150px">
-      <el-form-item label="秒杀订单超过：" prop="flashOrderOvertime">
+      <el-form-item label="秒殺訂單超過：" prop="flashOrderOvertime">
         <el-input v-model="orderSetting.flashOrderOvertime" class="input-width">
           <template slot="append">分</template>
         </el-input>
-        <span class="note-margin">未付款，订单自动关闭</span>
+        <span class="note-margin">未付款，訂單自動關閉</span>
       </el-form-item>
-      <el-form-item label="正常订单超过：" prop="normalOrderOvertime">
+      <el-form-item label="正常訂單超過：" prop="normalOrderOvertime">
         <el-input v-model="orderSetting.normalOrderOvertime" class="input-width">
           <template slot="append">分</template>
         </el-input>
-        <span class="note-margin">未付款，订单自动关闭</span>
+        <span class="note-margin">未付款，訂單自動關閉</span>
       </el-form-item>
-      <el-form-item label="发货超过：" prop="confirmOvertime">
+      <el-form-item label="發貨超過：" prop="confirmOvertime">
         <el-input v-model="orderSetting.confirmOvertime" class="input-width">
           <template slot="append">天</template>
         </el-input>
-        <span class="note-margin">未收货，订单自动完成</span>
+        <span class="note-margin">未收貨，訂單自動完成</span>
       </el-form-item>
-      <el-form-item label="订单完成超过：" prop="finishOvertime">
+      <el-form-item label="訂單完成超過：" prop="finishOvertime">
         <el-input v-model="orderSetting.finishOvertime" class="input-width">
           <template slot="append">天</template>
         </el-input>
-        <span class="note-margin">自动结束交易，不能申请售后</span>
+        <span class="note-margin">自動結束交易，不能申請售後</span>
       </el-form-item>
-      <el-form-item label="订单完成超过：" prop="commentOvertime">
+      <el-form-item label="訂單完成超過：" prop="commentOvertime">
         <el-input v-model="orderSetting.commentOvertime" class="input-width">
           <template slot="append">天</template>
         </el-input>
-        <span class="note-margin">自动五星好评</span>
+        <span class="note-margin">自動五星好評</span>
       </el-form-item>
       <el-form-item>
         <el-button
@@ -54,12 +54,12 @@
   };
   const checkTime = (rule, value, callback) => {
     if (!value) {
-      return callback(new Error('时间不能为空'));
+      return callback(new Error('時間不能為空'));
     }
     console.log("checkTime",value);
     let intValue = parseInt(value);
     if (!Number.isInteger(intValue)) {
-      return callback(new Error('请输入数字值'));
+      return callback(new Error('請輸入數字值'));
     }
     callback();
   };
@@ -85,7 +85,7 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$confirm('是否要提交修改?', '提示', {
-              confirmButtonText: '确定',
+              confirmButtonText: '確定',
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
@@ -99,7 +99,7 @@
             });
           } else {
             this.$message({
-              message: '提交参数不合法',
+              message: '提交參數不合法',
               type: 'warning'
             });
             return false;

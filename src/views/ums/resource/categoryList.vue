@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-card shadow="never" class="operate-container">
       <i class="el-icon-tickets"></i>
-      <span>数据列表</span>
+      <span>數據列表</span>
       <el-button size="mini" class="btn-add" @click="handleAdd()">添加</el-button>
     </el-card>
     <div class="table-container">
@@ -10,13 +10,13 @@
                 :data="list"
                 style="width: 100%;"
                 v-loading="listLoading" border>
-        <el-table-column label="编号" width="100" align="center">
+        <el-table-column label="編號" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="名称" align="center">
+        <el-table-column label="名稱" align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
-        <el-table-column label="创建时间" align="center">
+        <el-table-column label="創建時間" align="center">
           <template slot-scope="scope">{{scope.row.createTime | formatDateTime}}</template>
         </el-table-column>
         <el-table-column label="排序" align="center">
@@ -26,24 +26,24 @@
           <template slot-scope="scope">
             <el-button size="mini"
                        type="text"
-                       @click="handleUpdate(scope.$index, scope.row)">编辑
+                       @click="handleUpdate(scope.$index, scope.row)">編輯
             </el-button>
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除
+                       @click="handleDelete(scope.$index, scope.row)">刪除
             </el-button>
           </template>
         </el-table-column>
       </el-table>
     </div>
     <el-dialog
-      title="添加分类"
+      title="添加分類"
       :visible.sync="dialogVisible"
       width="40%">
       <el-form :model="resourceCategory"
                ref="resourceCategoryForm"
                label-width="150px" size="small">
-        <el-form-item label="名称：">
+        <el-form-item label="名稱：">
           <el-input v-model="resourceCategory.name" style="width: 250px"></el-input>
         </el-form-item>
         <el-form-item label="排序：">
@@ -52,7 +52,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false" size="small">取 消</el-button>
-        <el-button type="primary" @click="handleDialogConfirm()" size="small">确 定</el-button>
+        <el-button type="primary" @click="handleDialogConfirm()" size="small">確 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -99,23 +99,23 @@
         this.resourceCategory = Object.assign({},row);
       },
       handleDelete(index,row){
-        this.$confirm('是否要删除该分类?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要刪除該分類?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
           deleteResourceCategory(row.id).then(response => {
             this.$message({
               type: 'success',
-              message: '删除成功!'
+              message: '刪除成功!'
             });
             this.getList();
           });
         });
       },
       handleDialogConfirm() {
-        this.$confirm('是否要确认?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要確認?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {

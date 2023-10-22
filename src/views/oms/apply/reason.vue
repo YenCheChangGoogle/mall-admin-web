@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>数据列表</span>
+      <span>數據列表</span>
       <el-button
         size="mini"
         @click="handleAdd"
@@ -16,10 +16,10 @@
                 @selection-change="handleSelectionChange"
                 v-loading="listLoading" border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="80" align="center">
+        <el-table-column label="編號" width="80" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="原因类型" align="center">
+        <el-table-column label="原因類型" align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
         <el-table-column label="排序" width="100" align="center">
@@ -35,17 +35,17 @@
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="添加时间" width="180" align="center">
+        <el-table-column label="添加時間" width="180" align="center">
           <template slot-scope="scope">{{scope.row.createTime | formatCreateTime}}</template>
         </el-table-column>
         <el-table-column label="操作" width="160" align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="handleUpdate(scope.$index, scope.row)">编辑</el-button>
+              @click="handleUpdate(scope.$index, scope.row)">編輯</el-button>
             <el-button
               size="mini"
-              @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              @click="handleDelete(scope.$index, scope.row)">刪除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -67,7 +67,7 @@
         @click="handleBatchOperate"
         type="primary"
         size="small">
-        确定
+        確定
       </el-button>
     </div>
     <div class="pagination-container">
@@ -83,23 +83,23 @@
       </el-pagination>
     </div>
     <el-dialog
-      title="添加退货原因"
+      title="添加退貨原因"
       :visible.sync="dialogVisible" width="30%">
       <el-form :model="returnReason"
                ref="reasonForm" label-width="150px">
-        <el-form-item label="原因类型：">
+        <el-form-item label="原因類型：">
           <el-input v-model="returnReason.name" class="input-width"></el-input>
         </el-form-item>
         <el-form-item label="排序：">
           <el-input v-model="returnReason.sort" class="input-width"></el-input>
         </el-form-item>
-        <el-form-item label="是否启用：">
+        <el-form-item label="是否啟用：">
           <el-switch v-model="returnReason.status" :active-value="1" :inactive-value="0"></el-switch>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="handleConfirm">确 定</el-button>
+        <el-button type="primary" @click="handleConfirm">確 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -129,7 +129,7 @@
         operateType:null,
         operateOptions: [
           {
-            label: "删除",
+            label: "刪除",
             value: 1
           }
         ],
@@ -167,7 +167,7 @@
             this.getList();
           });
         }else{
-          //编辑操作
+          //編輯操作
           updateReason(this.operateReasonId,this.returnReason).then(response=>{
             this.dialogVisible=false;
             this.operateReasonId=null;
@@ -203,7 +203,7 @@
         param.append("ids",ids);
         updateStatus(param).then(response=>{
           this.$message({
-            message: '状态修改成功',
+            message: '狀態修改成功',
             type: 'success'
           });
         });
@@ -211,7 +211,7 @@
       handleBatchOperate(){
         if(this.multipleSelection==null||this.multipleSelection.length<1){
           this.$message({
-            message: '请选择要操作的条目',
+            message: '請選擇要操作的條目',
             type: 'warning',
             duration: 1000
           });
@@ -243,8 +243,8 @@
         });
       },
       deleteReason(ids){
-        this.$confirm('是否要进行该删除操作?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要進行該刪除操作?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -252,7 +252,7 @@
           params.append("ids",ids);
           deleteReason(params).then(response=>{
             this.$message({
-              message: '删除成功！',
+              message: '刪除成功！',
               type: 'success',
               duration: 1000
             });

@@ -3,13 +3,13 @@
     <el-card class="filter-container" shadow="never">
       <div>
         <i class="el-icon-search"></i>
-        <span>筛选搜索</span>
+        <span>篩選搜索</span>
         <el-button
           style="float:right"
           type="primary"
           @click="handleSearchList()"
           size="small">
-          查询搜索
+          查詢搜索
         </el-button>
         <el-button
           style="float:right;margin-right: 15px"
@@ -20,22 +20,22 @@
       </div>
       <div style="margin-top: 15px">
         <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-          <el-form-item label="输入搜索：">
-            <el-input v-model="listQuery.orderSn" class="input-width" placeholder="订单编号"></el-input>
+          <el-form-item label="輸入搜索：">
+            <el-input v-model="listQuery.orderSn" class="input-width" placeholder="訂單編號"></el-input>
           </el-form-item>
-          <el-form-item label="收货人：">
-            <el-input v-model="listQuery.receiverKeyword" class="input-width" placeholder="收货人姓名/手机号码"></el-input>
+          <el-form-item label="收貨人：">
+            <el-input v-model="listQuery.receiverKeyword" class="input-width" placeholder="收貨人姓名/手機號碼"></el-input>
           </el-form-item>
-          <el-form-item label="提交时间：">
+          <el-form-item label="提交時間：">
             <el-date-picker
               class="input-width"
               v-model="listQuery.createTime"
               value-format="yyyy-MM-dd"
               type="date"
-              placeholder="请选择时间">
+              placeholder="請選擇時間">
             </el-date-picker>
           </el-form-item>
-          <el-form-item label="订单状态：">
+          <el-form-item label="訂單狀態：">
             <el-select v-model="listQuery.status" class="input-width" placeholder="全部" clearable>
               <el-option v-for="item in statusOptions"
                          :key="item.value"
@@ -44,7 +44,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="订单分类：">
+          <el-form-item label="訂單分類：">
             <el-select v-model="listQuery.orderType" class="input-width" placeholder="全部" clearable>
               <el-option v-for="item in orderTypeOptions"
                          :key="item.value"
@@ -53,7 +53,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="订单来源：">
+          <el-form-item label="訂單來源：">
             <el-select v-model="listQuery.sourceType" class="input-width" placeholder="全部" clearable>
               <el-option v-for="item in sourceTypeOptions"
                          :key="item.value"
@@ -67,7 +67,7 @@
     </el-card>
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>数据列表</span>
+      <span>數據列表</span>
     </el-card>
     <div class="table-container">
       <el-table ref="orderTable"
@@ -76,28 +76,28 @@
                 @selection-change="handleSelectionChange"
                 v-loading="listLoading" border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="80" align="center">
+        <el-table-column label="編號" width="80" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="订单编号" width="180" align="center">
+        <el-table-column label="訂單編號" width="180" align="center">
           <template slot-scope="scope">{{scope.row.orderSn}}</template>
         </el-table-column>
-        <el-table-column label="提交时间" width="180" align="center">
+        <el-table-column label="提交時間" width="180" align="center">
           <template slot-scope="scope">{{scope.row.createTime | formatCreateTime}}</template>
         </el-table-column>
-        <el-table-column label="用户账号" align="center">
+        <el-table-column label="用戶賬號" align="center">
           <template slot-scope="scope">{{scope.row.memberUsername}}</template>
         </el-table-column>
-        <el-table-column label="订单金额" width="120" align="center">
+        <el-table-column label="訂單金額" width="120" align="center">
           <template slot-scope="scope">￥{{scope.row.totalAmount}}</template>
         </el-table-column>
         <el-table-column label="支付方式" width="120" align="center">
           <template slot-scope="scope">{{scope.row.payType | formatPayType}}</template>
         </el-table-column>
-        <el-table-column label="订单来源" width="120" align="center">
+        <el-table-column label="訂單來源" width="120" align="center">
           <template slot-scope="scope">{{scope.row.sourceType | formatSourceType}}</template>
         </el-table-column>
-        <el-table-column label="订单状态" width="120" align="center">
+        <el-table-column label="訂單狀態" width="120" align="center">
           <template slot-scope="scope">{{scope.row.status | formatStatus}}</template>
         </el-table-column>
         <el-table-column label="操作" width="200" align="center">
@@ -105,24 +105,24 @@
             <el-button
               size="mini"
               @click="handleViewOrder(scope.$index, scope.row)"
-            >查看订单</el-button>
+            >查看訂單</el-button>
             <el-button
               size="mini"
               @click="handleCloseOrder(scope.$index, scope.row)"
-              v-show="scope.row.status===0">关闭订单</el-button>
+              v-show="scope.row.status===0">關閉訂單</el-button>
             <el-button
               size="mini"
               @click="handleDeliveryOrder(scope.$index, scope.row)"
-              v-show="scope.row.status===1">订单发货</el-button>
+              v-show="scope.row.status===1">訂單發貨</el-button>
             <el-button
               size="mini"
               @click="handleViewLogistics(scope.$index, scope.row)"
-              v-show="scope.row.status===2||scope.row.status===3">订单跟踪</el-button>
+              v-show="scope.row.status===2||scope.row.status===3">訂單跟蹤</el-button>
             <el-button
               size="mini"
               type="danger"
               @click="handleDeleteOrder(scope.$index, scope.row)"
-              v-show="scope.row.status===4">删除订单</el-button>
+              v-show="scope.row.status===4">刪除訂單</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -144,7 +144,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        確定
       </el-button>
     </div>
     <div class="pagination-container">
@@ -160,19 +160,19 @@
       </el-pagination>
     </div>
     <el-dialog
-      title="关闭订单"
+      title="關閉訂單"
       :visible.sync="closeOrder.dialogVisible" width="30%">
-      <span style="vertical-align: top">操作备注：</span>
+      <span style="vertical-align: top">操作備註：</span>
       <el-input
         style="width: 80%"
         type="textarea"
         :rows="5"
-        placeholder="请输入内容"
+        placeholder="請輸入內容"
         v-model="closeOrder.content">
       </el-input>
       <span slot="footer" class="dialog-footer">
         <el-button @click="closeOrder.dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="handleCloseOrderConfirm">确 定</el-button>
+        <el-button type="primary" @click="handleCloseOrderConfirm">確 定</el-button>
       </span>
     </el-dialog>
     <logistics-dialog v-model="logisticsDialogVisible"></logistics-dialog>
@@ -214,11 +214,11 @@
             value: 0
           },
           {
-            label: '待发货',
+            label: '待發貨',
             value: 1
           },
           {
-            label: '已发货',
+            label: '已發貨',
             value: 2
           },
           {
@@ -226,41 +226,41 @@
             value: 3
           },
           {
-            label: '已关闭',
+            label: '已關閉',
             value: 4
           }
         ],
         orderTypeOptions: [
           {
-            label: '正常订单',
+            label: '正常訂單',
             value: 0
           },
           {
-            label: '秒杀订单',
+            label: '秒殺訂單',
             value: 1
           }
         ],
         sourceTypeOptions: [
           {
-            label: 'PC订单',
+            label: 'PC訂單',
             value: 0
           },
           {
-            label: 'APP订单',
+            label: 'APP訂單',
             value: 1
           }
         ],
         operateOptions: [
           {
-            label: "批量发货",
+            label: "批量發貨",
             value: 1
           },
           {
-            label: "关闭订单",
+            label: "關閉訂單",
             value: 2
           },
           {
-            label: "删除订单",
+            label: "刪除訂單",
             value: 3
           }
         ],
@@ -277,7 +277,7 @@
       },
       formatPayType(value) {
         if (value === 1) {
-          return '支付宝';
+          return '支付寶';
         } else if (value === 2) {
           return '微信';
         } else {
@@ -286,22 +286,22 @@
       },
       formatSourceType(value) {
         if (value === 1) {
-          return 'APP订单';
+          return 'APP訂單';
         } else {
-          return 'PC订单';
+          return 'PC訂單';
         }
       },
       formatStatus(value) {
         if (value === 1) {
-          return '待发货';
+          return '待發貨';
         } else if (value === 2) {
-          return '已发货';
+          return '已發貨';
         } else if (value === 3) {
           return '已完成';
         } else if (value === 4) {
-          return '已关闭';
+          return '已關閉';
         } else if (value === 5) {
-          return '无效订单';
+          return '無效訂單';
         } else {
           return '待付款';
         }
@@ -340,14 +340,14 @@
       handleBatchOperate(){
         if(this.multipleSelection==null||this.multipleSelection.length<1){
           this.$message({
-            message: '请选择要操作的订单',
+            message: '請選擇要操作的訂單',
             type: 'warning',
             duration: 1000
           });
           return;
         }
         if(this.operateType===1){
-          //批量发货
+          //批量發貨
           let list=[];
           for(let i=0;i<this.multipleSelection.length;i++){
             if(this.multipleSelection[i].status===1){
@@ -356,7 +356,7 @@
           }
           if(list.length===0){
             this.$message({
-              message: '选中订单中没有可以发货的订单',
+              message: '選中訂單中沒有可以發貨的訂單',
               type: 'warning',
               duration: 1000
             });
@@ -364,14 +364,14 @@
           }
           this.$router.push({path:'/oms/deliverOrderList',query:{list:list}})
         }else if(this.operateType===2){
-          //关闭订单
+          //關閉訂單
           this.closeOrder.orderIds=[];
           for(let i=0;i<this.multipleSelection.length;i++){
             this.closeOrder.orderIds.push(this.multipleSelection[i].id);
           }
           this.closeOrder.dialogVisible=true;
         }else if(this.operateType===3){
-          //删除订单
+          //刪除訂單
           let ids=[];
           for(let i=0;i<this.multipleSelection.length;i++){
             ids.push(this.multipleSelection[i].id);
@@ -391,7 +391,7 @@
       handleCloseOrderConfirm() {
         if (this.closeOrder.content == null || this.closeOrder.content === '') {
           this.$message({
-            message: '操作备注不能为空',
+            message: '操作備註不能為空',
             type: 'warning',
             duration: 1000
           });
@@ -420,8 +420,8 @@
         });
       },
       deleteOrder(ids){
-        this.$confirm('是否要进行该删除操作?', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否要進行該刪除操作?', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -429,7 +429,7 @@
           params.append("ids",ids);
           deleteOrder(params).then(response=>{
             this.$message({
-              message: '删除成功！',
+              message: '刪除成功！',
               type: 'success',
               duration: 1000
             });

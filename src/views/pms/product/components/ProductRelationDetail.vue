@@ -5,30 +5,30 @@
              label-width="120px"
              style="width: 680px"
              size="small">
-      <el-form-item label="关联专题：">
+      <el-form-item label="關聯專題：">
         <el-transfer
           style="display: inline-block"
           filterable
           :filter-method="filterMethod"
-          filter-placeholder="请输入专题名称"
+          filter-placeholder="請輸入專題名稱"
           v-model="selectSubject"
           :titles="subjectTitles"
           :data="subjectList">
         </el-transfer>
       </el-form-item>
-      <el-form-item label="关联优选：">
+      <el-form-item label="關聯優選：">
         <el-transfer
           style="display: inline-block"
           filterable
           :filter-method="filterMethod"
-          filter-placeholder="请输入优选名称"
+          filter-placeholder="請輸入優選名稱"
           v-model="selectPrefrenceArea"
           :titles="prefrenceAreaTitles"
           :data="prefrenceAreaList">
         </el-transfer>
       </el-form-item>
       <el-form-item style="text-align: center">
-        <el-button size="medium" @click="handlePrev">上一步，填写商品属性</el-button>
+        <el-button size="medium" @click="handlePrev">上一步，填寫商品屬性</el-button>
         <el-button type="primary" size="medium" @click="handleFinishCommit">完成，提交商品</el-button>
       </el-form-item>
     </el-form>
@@ -50,14 +50,14 @@
     },
     data() {
       return {
-        //所有专题列表
+        //所有專題列表
         subjectList: [],
-        //专题左右标题
-        subjectTitles: ['待选择', '已选择'],
-        //所有专题列表
+        //專題左右標題
+        subjectTitles: ['待選擇', '已選擇'],
+        //所有專題列表
         prefrenceAreaList: [],
-        //专题左右标题
-        prefrenceAreaTitles: ['待选择', '已选择']
+        //專題左右標題
+        prefrenceAreaTitles: ['待選擇', '已選擇']
       };
     },
     created() {
@@ -65,7 +65,7 @@
       this.getPrefrenceAreaList();
     },
     computed:{
-      //选中的专题
+      //選中的專題
       selectSubject:{
         get:function () {
           let subjects =[];
@@ -84,7 +84,7 @@
           }
         }
       },
-      //选中的优选
+      //選中的優選
       selectPrefrenceArea:{
         get:function () {
           let prefrenceAreas =[];

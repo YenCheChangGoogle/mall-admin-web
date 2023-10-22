@@ -71,8 +71,8 @@
             }
           }
         }
-        this.$confirm('是否分配菜单？', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否分配菜單？', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(()=>{

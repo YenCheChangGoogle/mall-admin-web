@@ -10,7 +10,7 @@
       <el-dropdown-menu class="user-dropdown" slot="dropdown">
         <router-link class="inlineBlock" to="/">
           <el-dropdown-item>
-            首页
+            首頁
           </el-dropdown-item>
         </router-link>
         <el-dropdown-item divided>
@@ -43,7 +43,7 @@ export default {
     },
     logout() {
       this.$store.dispatch('LogOut').then(() => {
-        location.reload() // 为了重新实例化vue-router对象 避免bug
+        location.reload() // 為了重新實例化vue-router對像 避免bug
       })
     }
   }

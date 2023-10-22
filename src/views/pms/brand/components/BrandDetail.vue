@@ -1,7 +1,7 @@
 <template> 
   <el-card class="form-container" shadow="never">
     <el-form :model="brand" :rules="rules" ref="brandFrom" label-width="150px">
-      <el-form-item label="品牌名称：" prop="name">
+      <el-form-item label="品牌名稱：" prop="name">
         <el-input v-model="brand.name"></el-input>
       </el-form-item>
       <el-form-item label="品牌首字母：">
@@ -10,12 +10,12 @@
       <el-form-item label="品牌LOGO：" prop="logo">
         <single-upload v-model="brand.logo"></single-upload>
       </el-form-item>
-      <el-form-item label="品牌专区大图：">
+      <el-form-item label="品牌專區大圖：">
         <single-upload v-model="brand.bigPic"></single-upload>
       </el-form-item>
       <el-form-item label="品牌故事：">
         <el-input
-          placeholder="请输入内容"
+          placeholder="請輸入內容"
           type="textarea"
           v-model="brand.brandStory"
           :autosize="true"></el-input>
@@ -23,13 +23,13 @@
       <el-form-item label="排序：" prop="sort">
         <el-input v-model.number="brand.sort"></el-input>
       </el-form-item>
-      <el-form-item label="是否显示：">
+      <el-form-item label="是否顯示：">
         <el-radio-group v-model="brand.showStatus">
           <el-radio :label="1">是</el-radio>
           <el-radio :label="0">否</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="品牌制造商：">
+      <el-form-item label="品牌製造商：">
         <el-radio-group v-model="brand.factoryStatus">
           <el-radio :label="1">是</el-radio>
           <el-radio :label="0">否</el-radio>
@@ -69,14 +69,14 @@
         brand:Object.assign({}, defaultBrand),
         rules: {
           name: [
-            {required: true, message: '请输入品牌名称', trigger: 'blur'},
-            {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
+            {required: true, message: '請輸入品牌名稱', trigger: 'blur'},
+            {min: 2, max: 140, message: '長度在 2 到 140 個字符', trigger: 'blur'}
           ],
           logo: [
-            {required: true, message: '请输入品牌logo', trigger: 'blur'}
+            {required: true, message: '請輸入品牌logo', trigger: 'blur'}
           ],
           sort: [
-            {type: 'number', message: '排序必须为数字'}
+            {type: 'number', message: '排序必須為數字'}
           ],
         }
       }
@@ -94,8 +94,8 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$confirm('是否提交数据', '提示', {
-              confirmButtonText: '确定',
+            this.$confirm('是否提交數據', '提示', {
+              confirmButtonText: '確定',
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
@@ -124,7 +124,7 @@
 
           } else {
             this.$message({
-              message: '验证失败',
+              message: '驗證失敗',
               type: 'error',
               duration:1000
             });

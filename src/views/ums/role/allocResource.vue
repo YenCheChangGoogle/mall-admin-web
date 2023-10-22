@@ -119,8 +119,8 @@
         return checkedCount === cateResources.length;
       },
       handleSave() {
-        this.$confirm('是否分配资源？', '提示', {
-          confirmButtonText: '确定',
+        this.$confirm('是否分配資源？', '提示', {
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {

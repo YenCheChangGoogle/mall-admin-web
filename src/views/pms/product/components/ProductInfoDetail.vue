@@ -1,23 +1,23 @@
 <template>
   <div style="margin-top: 50px">
     <el-form :model="value" :rules="rules" ref="productInfoForm" label-width="120px" style="width: 600px" size="small">
-      <el-form-item label="商品分类：" prop="productCategoryId">
+      <el-form-item label="商品分類：" prop="productCategoryId">
         <el-cascader
           v-model="selectProductCateValue"
           :options="productCateOptions">
         </el-cascader>
       </el-form-item>
-      <el-form-item label="商品名称：" prop="name">
+      <el-form-item label="商品名稱：" prop="name">
         <el-input v-model="value.name"></el-input>
       </el-form-item>
-      <el-form-item label="副标题：" prop="subTitle">
+      <el-form-item label="副標題：" prop="subTitle">
         <el-input v-model="value.subTitle"></el-input>
       </el-form-item>
       <el-form-item label="商品品牌：" prop="brandId">
         <el-select
           v-model="value.brandId"
           @change="handleBrandChange"
-          placeholder="请选择品牌">
+          placeholder="請選擇品牌">
           <el-option
             v-for="item in brandOptions"
             :key="item.value"
@@ -26,26 +26,26 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="商品介绍：">
+      <el-form-item label="商品介紹：">
         <el-input
           :autoSize="true"
           v-model="value.description"
           type="textarea"
-          placeholder="请输入内容"></el-input>
+          placeholder="請輸入內容"></el-input>
       </el-form-item>
-      <el-form-item label="商品货号：">
+      <el-form-item label="商品貨號：">
         <el-input v-model="value.productSn"></el-input>
       </el-form-item>
-      <el-form-item label="商品售价：">
+      <el-form-item label="商品售價：">
         <el-input v-model="value.price"></el-input>
       </el-form-item>
-      <el-form-item label="市场价：">
+      <el-form-item label="市場價：">
         <el-input v-model="value.originalPrice"></el-input>
       </el-form-item>
-      <el-form-item label="商品库存：">
+      <el-form-item label="商品庫存：">
         <el-input v-model="value.stock"></el-input>
       </el-form-item>
-      <el-form-item label="计量单位：">
+      <el-form-item label="計量單位：">
         <el-input v-model="value.unit"></el-input>
       </el-form-item>
       <el-form-item label="商品重量：">
@@ -56,7 +56,7 @@
         <el-input v-model="value.sort"></el-input>
       </el-form-item>
       <el-form-item style="text-align: center">
-        <el-button type="primary" size="medium" @click="handleNext('productInfoForm')">下一步，填写商品促销</el-button>
+        <el-button type="primary" size="medium" @click="handleNext('productInfoForm')">下一步，填寫商品促銷</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -79,20 +79,20 @@
     data() {
       return {
         hasEditCreated:false,
-        //选中商品分类的值
+        //選中商品分類的值
         selectProductCateValue: [],
         productCateOptions: [],
         brandOptions: [],
         rules: {
           name: [
-            {required: true, message: '请输入商品名称', trigger: 'blur'},
-            {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
+            {required: true, message: '請輸入商品名稱', trigger: 'blur'},
+            {min: 2, max: 140, message: '長度在 2 到 140 個字符', trigger: 'blur'}
           ],
-          subTitle: [{required: true, message: '请输入商品副标题', trigger: 'blur'}],
-          productCategoryId: [{required: true, message: '请选择商品分类', trigger: 'blur'}],
-          brandId: [{required: true, message: '请选择商品品牌', trigger: 'blur'}],
-          description: [{required: true, message: '请输入商品介绍', trigger: 'blur'}],
-          requiredProp: [{required: true, message: '该项为必填项', trigger: 'blur'}]
+          subTitle: [{required: true, message: '請輸入商品副標題', trigger: 'blur'}],
+          productCategoryId: [{required: true, message: '請選擇商品分類', trigger: 'blur'}],
+          brandId: [{required: true, message: '請選擇商品品牌', trigger: 'blur'}],
+          description: [{required: true, message: '請輸入商品介紹', trigger: 'blur'}],
+          requiredProp: [{required: true, message: '該項為必填項', trigger: 'blur'}]
         }
       };
     },
@@ -101,7 +101,7 @@
       this.getBrandList();
     },
     computed:{
-      //商品的编号
+      //商品的編號
       productId(){
         return this.value.id;
       }
@@ -124,7 +124,7 @@
       }
     },
     methods: {
-      //处理编辑逻辑
+      //處理編輯邏輯
       handleEditCreated(){
         if(this.value.productCategoryId!=null){
           this.selectProductCateValue.push(this.value.cateParentId);
@@ -174,7 +174,7 @@
             this.$emit('nextStep');
           } else {
             this.$message({
-              message: '验证失败',
+              message: '驗證失敗',
               type: 'error',
               duration:1000
             });

@@ -4,12 +4,12 @@
              :rules="rules"
              ref="menuFrom"
              label-width="150px">
-      <el-form-item label="菜单名称：" prop="title">
+      <el-form-item label="菜單名稱：" prop="title">
         <el-input v-model="menu.title"></el-input>
       </el-form-item>
-      <el-form-item label="上级菜单：">
+      <el-form-item label="上級菜單：">
         <el-select v-model="menu.parentId"
-                   placeholder="请选择菜单">
+                   placeholder="請選擇菜單">
           <el-option
             v-for="item in selectMenuList"
             :key="item.id"
@@ -18,14 +18,14 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="前端名称：" prop="name">
+      <el-form-item label="前端名稱：" prop="name">
         <el-input v-model="menu.name"></el-input>
       </el-form-item>
-      <el-form-item label="前端图标：" prop="icon">
+      <el-form-item label="前端圖標：" prop="icon">
         <el-input v-model="menu.icon" style="width: 80%"></el-input>
         <svg-icon style="margin-left: 8px" :icon-class="menu.icon"></svg-icon>
       </el-form-item>
-      <el-form-item label="是否显示：">
+      <el-form-item label="是否顯示：">
         <el-radio-group v-model="menu.hidden">
           <el-radio :label="0">是</el-radio>
           <el-radio :label="1">否</el-radio>
@@ -67,16 +67,16 @@
         selectMenuList: [],
         rules: {
           title: [
-            {required: true, message: '请输入菜单名称', trigger: 'blur'},
-            {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
+            {required: true, message: '請輸入菜單名稱', trigger: 'blur'},
+            {min: 2, max: 140, message: '長度在 2 到 140 個字符', trigger: 'blur'}
           ],
           name: [
-            {required: true, message: '请输入前端名称', trigger: 'blur'},
-            {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
+            {required: true, message: '請輸入前端名稱', trigger: 'blur'},
+            {min: 2, max: 140, message: '長度在 2 到 140 個字符', trigger: 'blur'}
           ],
           icon: [
-            {required: true, message: '请输入前端图标', trigger: 'blur'},
-            {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
+            {required: true, message: '請輸入前端圖標', trigger: 'blur'},
+            {min: 2, max: 140, message: '長度在 2 到 140 個字符', trigger: 'blur'}
           ]
         }
       }
@@ -95,14 +95,14 @@
       getSelectMenuList() {
         fetchList(0, {pageSize: 100, pageNum: 1}).then(response => {
           this.selectMenuList = response.data.list;
-          this.selectMenuList.unshift({id: 0, title: '无上级菜单'});
+          this.selectMenuList.unshift({id: 0, title: '無上級菜單'});
         });
       },
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$confirm('是否提交数据', '提示', {
-              confirmButtonText: '确定',
+            this.$confirm('是否提交數據', '提示', {
+              confirmButtonText: '確定',
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
@@ -131,7 +131,7 @@
 
           } else {
             this.$message({
-              message: '验证失败',
+              message: '驗證失敗',
               type: 'error',
               duration: 1000
             });

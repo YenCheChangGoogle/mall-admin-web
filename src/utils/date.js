@@ -30,7 +30,7 @@ export function str2Date(dateStr, separator) {
   let dateArr = dateStr.split(separator);
   let year = parseInt(dateArr[0]);
   let month;
-  //处理月份为04这样的情况
+  //處理月份為04這樣的情況
   if (dateArr[1].indexOf("0") == 0) {
     month = parseInt(dateArr[1].substring(1));
   } else {
